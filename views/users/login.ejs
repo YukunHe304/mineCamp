@@ -1,0 +1,48 @@
+<% layout("layouts/boilerplate") %>
+<link rel="stylesheet" href="/styles/login.css" />
+
+<div class="row justify-content-center mt-5">
+  <div class="col-md-8 col-lg-6">
+    <div class="login-card">
+      <h1 class="text-center mb-4">Login</h1>
+
+      <form action="/login" method="post" class="validated-form" novalidate>
+        <div class="mb-4">
+          <label for="username" class="form-label">Username</label>
+          <input
+            type="text"
+            class="form-control"
+            name="username"
+            id="username"
+            placeholder="Username"
+            required
+          />
+          <div class="valid-feedback">Looks good!</div>
+          <div class="invalid-feedback">Please provide a username.</div>
+        </div>
+
+        <div class="mb-4">
+          <label for="password" class="form-label">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            name="password"
+            id="password"
+            placeholder="Password"
+            required
+          />
+          <div class="valid-feedback">Looks good!</div>
+          <div class="invalid-feedback">Please provide a password.</div>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Login</button>
+      </form>
+
+      <div class="text-center mt-4">
+        <p class="mb-0">
+          Don't have an account? <a href="/register">Register here</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

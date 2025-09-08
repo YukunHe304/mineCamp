@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YelpCamp - Discover Amazing Campgrounds</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+      }
+
+      /* Hero Section */
+      .hero-section {
+        height: 100vh;
+        background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)),
+          url("https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80")
+            center/cover no-repeat;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+        position: relative;
+      }
+
+      /* Navigation */
+      .navbar {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        padding: 1rem 0;
+        transition: all 0.3s ease;
+      }
+
+      .navbar.scrolled {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .navbar.scrolled .navbar-brand,
+      .navbar.scrolled .nav-link {
+        color: #333 !important;
+      }
+
+      .navbar-brand {
+        font-weight: 700;
+        font-size: 1.8rem;
+        color: white !important;
+      }
+
+      .nav-link {
+        color: white !important;
+        font-weight: 500;
+        margin: 0 1rem;
+        transition: all 0.3s ease;
+      }
+
+      .nav-link:hover {
+        color: #ffc107 !important;
+        transform: translateY(-2px);
+      }
+
+      /* Hero Content */
+      .hero-content {
+        max-width: 800px;
+        z-index: 2;
+      }
+
+      .hero-title {
+        font-size: 4rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        animation: fadeInUp 1s ease;
+      }
+
+      .hero-subtitle {
+        font-size: 1.3rem;
+        margin-bottom: 2.5rem;
+        font-weight: 300;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        animation: fadeInUp 1s ease 0.3s both;
+      }
+
+      .hero-buttons {
+        animation: fadeInUp 1s ease 0.6s both;
+      }
+
+      .btn-hero {
+        padding: 15px 40px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        border-radius: 50px;
+        margin: 0 1rem;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+      }
+
+      .btn-primary-hero {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border: none;
+        color: white;
+      }
+
+      .btn-primary-hero:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        color: white;
+      }
+
+      .btn-outline-hero {
+        background: transparent;
+        border: 2px solid white;
+        color: white;
+      }
+
+      .btn-outline-hero:hover {
+        background: white;
+        color: #333;
+        transform: translateY(-3px);
+      }
+
+      /* Features Section */
+      .features-section {
+        padding: 6rem 0;
+        background: #f8f9fa;
+      }
+
+      .feature-card {
+        text-align: center;
+        padding: 3rem 2rem;
+        border-radius: 15px;
+        background: white;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        height: 100%;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      .feature-icon {
+        font-size: 3rem;
+        color: #667eea;
+        margin-bottom: 1.5rem;
+      }
+
+      .feature-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: #333;
+      }
+
+      .feature-text {
+        color: #666;
+        line-height: 1.6;
+      }
+
+      /* Scroll animations */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Scroll indicator */
+      .scroll-indicator {
+        position: absolute;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        color: white;
+        animation: bounce 2s infinite;
+      }
+
+      @keyframes bounce {
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+          transform: translateX(-50%) translateY(0);
+        }
+        40% {
+          transform: translateX(-50%) translateY(-10px);
+        }
+        60% {
+          transform: translateX(-50%) translateY(-5px);
+        }
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .hero-title {
+          font-size: 2.5rem;
+        }
+
+        .hero-subtitle {
+          font-size: 1.1rem;
+        }
+
+        .btn-hero {
+          display: block;
+          margin: 1rem 0;
+          width: 80%;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        .navbar-nav {
+          text-align: center;
+          padding-top: 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand" href="/">
+          <i class="fas fa-campground me-2"></i>YelpCamp
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/campgrounds">Campgrounds</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/campgrounds/new">Add Campground</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/login">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/register">Register</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-content">
+        <h1 class="hero-title">Discover Amazing Campgrounds</h1>
+        <p class="hero-subtitle">
+          Find and share the most beautiful camping spots around the world. Your
+          next adventure is just a click away.
+        </p>
+        <div class="hero-buttons">
+          <a href="/campgrounds" class="btn-hero btn-primary-hero">
+            <i class="fas fa-search me-2"></i>Explore Campgrounds
+          </a>
+          <a href="/campgrounds/new" class="btn-hero btn-outline-hero">
+            <i class="fas fa-plus me-2"></i>Add Campground
+          </a>
+        </div>
+      </div>
+
+      <!-- Scroll Indicator -->
+      <div class="scroll-indicator">
+        <i class="fas fa-chevron-down fa-2x"></i>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+      <div class="container">
+        <div class="row text-center mb-5">
+          <div class="col-lg-8 mx-auto">
+            <h2 class="display-5 fw-bold mb-3">Why Choose YelpCamp?</h2>
+            <p class="lead text-muted">
+              Discover what makes our platform the perfect choice for outdoor
+              enthusiasts
+            </p>
+          </div>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-lg-4 col-md-6">
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fas fa-map-marked-alt"></i>
+              </div>
+              <h3 class="feature-title">Interactive Maps</h3>
+              <p class="feature-text">
+                Explore campgrounds with our interactive maps. Find the perfect
+                location with detailed geographic information and satellite
+                imagery.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6">
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fas fa-users"></i>
+              </div>
+              <h3 class="feature-title">Community Reviews</h3>
+              <p class="feature-text">
+                Read authentic reviews from fellow campers. Share your
+                experiences and help others discover amazing outdoor
+                destinations.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6">
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fas fa-shield-alt"></i>
+              </div>
+              <h3 class="feature-title">Verified Locations</h3>
+              <p class="feature-text">
+                All campgrounds are verified and regularly updated. Trust in
+                accurate information for your next outdoor adventure.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      // Navbar scroll effect
+      window.addEventListener("scroll", function () {
+        const navbar = document.querySelector(".navbar");
+        if (window.scrollY > 50) {
+          navbar.classList.add("scrolled");
+        } else {
+          navbar.classList.remove("scrolled");
+        }
+      });
+
+      // Smooth scrolling for scroll indicator
+      document
+        .querySelector(".scroll-indicator")
+        .addEventListener("click", function () {
+          document.querySelector(".features-section").scrollIntoView({
+            behavior: "smooth",
+          });
+        });
+    </script>
+  </body>
+</html>

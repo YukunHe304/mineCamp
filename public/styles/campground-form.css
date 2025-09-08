@@ -1,0 +1,261 @@
+/* Campground Form Styles - For both New and Edit forms */
+
+.form-card {
+  border: 2px solid #dee2e6;
+  border-radius: 15px;
+  padding: 3rem;
+  background-color: white;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.form-title {
+  color: #333;
+  font-weight: 600;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.campground-form {
+  max-width: 100%;
+}
+
+.form-group {
+  margin-bottom: 2rem;
+}
+
+.form-label {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+.form-control {
+  border: 2px solid #e1e5e9;
+  border-radius: 8px;
+  padding: 1rem;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.form-control:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+  outline: none;
+}
+
+.form-control.is-valid {
+  border-color: #28a745;
+}
+
+.form-control.is-invalid {
+  border-color: #dc3545;
+}
+
+/* Textarea specific styling */
+textarea.form-control {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* Input group styling */
+.input-group {
+  display: flex;
+}
+
+.input-group-text {
+  background-color: #f8f9fa;
+  border: 2px solid #e1e5e9;
+  border-right: none;
+  border-radius: 8px 0 0 8px;
+  padding: 1rem;
+  font-weight: 600;
+  color: #667eea;
+}
+
+.input-group .form-control {
+  border-left: none;
+  border-radius: 0 8px 8px 0;
+}
+
+.input-group .form-control:focus {
+  border-left: 2px solid #667eea;
+}
+
+/* File input styling - Standard Bootstrap file input */
+input[type="file"].form-control {
+  padding: 0.5rem;
+  height: auto;
+}
+
+/* Current Images Section - for Edit form */
+.current-images {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.image-item {
+  border: 2px solid #e1e5e9;
+  border-radius: 8px;
+  padding: 1rem;
+  background-color: #f8f9fa;
+}
+
+.current-image {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-bottom: 0.75rem;
+}
+
+.image-actions {
+  text-align: center;
+}
+
+.form-check {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.form-check-input {
+  margin: 0;
+}
+
+.form-check-label {
+  font-size: 0.9rem;
+  color: #dc3545;
+  font-weight: 500;
+  margin: 0;
+  cursor: pointer;
+}
+
+/* Form text */
+.form-text {
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+}
+
+/* Feedback messages */
+.valid-feedback,
+.invalid-feedback {
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+  font-weight: 500;
+}
+
+.valid-feedback {
+  color: #28a745;
+}
+
+.invalid-feedback {
+  color: #dc3545;
+}
+
+/* Form actions */
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid #dee2e6;
+}
+
+.btn-submit {
+  background-color: #667eea;
+  border-color: #667eea;
+  color: white;
+  padding: 0.875rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.btn-submit:hover {
+  background-color: #5a6fd8;
+  border-color: #5a6fd8;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+  color: white;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  border-color: #6c757d;
+  color: white;
+  padding: 0.875rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+  border-color: #5a6268;
+  color: white;
+  text-decoration: none;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(108, 117, 125, 0.3);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .form-card {
+    padding: 2rem 1.5rem;
+    margin: 1rem;
+  }
+  
+  .form-title {
+    font-size: 2rem;
+  }
+  
+  .current-images {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+  
+  .current-image {
+    height: 120px;
+  }
+  
+  .form-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .btn-submit,
+  .btn-secondary {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .container {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  
+  .form-card {
+    border: none;
+    box-shadow: none;
+    padding: 1.5rem 1rem;
+  }
+  
+  .current-images {
+    grid-template-columns: 1fr;
+  }
+}

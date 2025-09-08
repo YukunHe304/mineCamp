@@ -1,0 +1,103 @@
+<% layout('layouts/boilerplate')%>
+
+<!-- 引入样式文件 -->
+<link rel="stylesheet" href="/styles/campground-form.css" />
+
+<div class="row justify-content-center mb-5">
+  <div class="col-lg-8 col-md-10">
+    <div class="form-card">
+      <h1 class="form-title text-center mb-4">New Campground</h1>
+
+      <form
+        action="/campgrounds"
+        method="POST"
+        novalidate
+        class="validated-form campground-form"
+        enctype="multipart/form-data"
+      >
+        <div class="form-group">
+          <label class="form-label" for="title">Title</label>
+          <input
+            class="form-control"
+            type="text"
+            id="title"
+            name="campground[title]"
+            placeholder="Enter campground title"
+            required
+          />
+          <div class="valid-feedback">Looks good!</div>
+          <div class="invalid-feedback">Please provide a title.</div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="location">Location</label>
+          <input
+            class="form-control"
+            type="text"
+            id="location"
+            name="campground[location]"
+            placeholder="Enter location"
+            required
+          />
+          <div class="valid-feedback">Looks good!</div>
+          <div class="invalid-feedback">Please provide a location.</div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="price">Campground Price</label>
+          <div class="input-group">
+            <span class="input-group-text">$</span>
+            <input
+              type="text"
+              class="form-control"
+              id="price"
+              placeholder="0.00"
+              name="campground[price]"
+              required
+            />
+          </div>
+          <div class="valid-feedback">Looks good!</div>
+          <div class="invalid-feedback">Please provide a price.</div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="description">Description</label>
+          <textarea
+            class="form-control"
+            id="description"
+            name="campground[description]"
+            rows="4"
+            placeholder="Describe your campground..."
+            required
+          ></textarea>
+          <div class="valid-feedback">Looks good!</div>
+          <div class="invalid-feedback">Please provide a description.</div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="image">Images</label>
+          <input
+            type="file"
+            class="form-control"
+            id="image"
+            name="image"
+            multiple
+            accept="image/*"
+          />
+          <small class="form-text text-muted"
+            >You can select multiple images</small
+          >
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary btn-submit">
+            <i class="fas fa-plus me-2"></i>Add Campground
+          </button>
+          <a href="/campgrounds" class="btn btn-secondary">
+            <i class="fas fa-arrow-left me-2"></i>Back to Campgrounds
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+/* 覆盖所有primary按钮的颜色 */
+.btn-primary {
+    background: #667eea !important;
+    border-color: #667eea !important;
+    color: white !important;
+}
+
+.btn-primary:hover {
+    background: #5a6fd8 !important;
+    border-color: #5a6fd8 !important;
+    color: white !important;
+}
+
+.btn-primary:focus,
+.btn-primary.focus {
+    background: #5a6fd8 !important;
+    border-color: #5a6fd8 !important;
+    box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.5) !important;
+}
+
+.btn-primary:active,
+.btn-primary.active {
+    background: #4f63d2 !important;
+    border-color: #4f63d2 !important;
+}
+
+/* 如果你有渐变按钮，也统一颜色 */
+.campground-card .btn-primary {
+    background: #667eea !important;
+    border: none !important;
+}
+
+.campground-card .btn-primary:hover {
+    background: #5a6fd8 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+}
